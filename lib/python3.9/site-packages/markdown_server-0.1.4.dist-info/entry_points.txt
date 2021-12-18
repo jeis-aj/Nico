@@ -1,0 +1,4 @@
+[console_scripts]
+convert = markdownserver.markdown_converter:main
+markdownserver = markdownserver:main
+

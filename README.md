@@ -164,3 +164,8 @@ Components :
 + Pir * 3
 + Buzzer
 + Heat shrink tube
+
+
+# flow chart
+
+https://www.freva.com/dht11-temperature-and-humidity-sensor-on-raspberry-pi/
