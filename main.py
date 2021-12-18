@@ -96,33 +96,35 @@ class Dist:
 		distance = (TimeElapsed * 34300) / 2
 
 		return distance
-
-fl_ul = Dist.distance(4,14)
-br_ul = Dist.distance(17,18)
-ff_ul = Dist.distance(22,23)
-bb_ul = Dist.distance(9,25)
-fr_ul = Dist.distance(11,8)
-bl_ul = Dist.distance(0,1)
-
-
-right_M = motor(19,16)
-left_M = motor(26,20)
-	
-min_dist = 50 
-
-if min_dist > fl_ul:
-	motor.right_turn()
+def loop():
+		
+	fl_ul = Dist.distance(2,3)
+	br_ul = Dist.distance(17,27)
+	ff_ul = Dist.distance(10,9)
+	bb_ul = Dist.distance(0,5)
+	fr_ul = Dist.distance(6,13)
+	bl_ul = Dist.distance(19,26)
 
 
-elif  min_dist > fr_ul:
-	motor.left_turn()
-	
-elif min_dist > fl_ul:
-	motor.right_turn()
-	
-else  :
-	motor.right_turn()
+	right_M = motor(20,21)
+	left_M = motor(7,1)
+		
+	min_dist = 50 
 
-humidity,temp = dht();
+	if min_dist > fl_ul:
+		motor.right_turn()
 
-print("Temperature: {}*C   Humidity: {}% ".format(temp, humidity))
+
+	elif  min_dist > fr_ul:
+		motor.left_turn()
+		
+	elif min_dist > fl_ul:
+		motor.right_turn()
+		
+	else  :
+		motor.right_turn()
+
+	humidity,temp = dht();
+
+	print("Temperature: {}*C   Humidity: {}% ".format(temp, humidity))
+
