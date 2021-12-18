@@ -168,10 +168,4 @@ Components :
 
 # flow chart
 
-
-~~~mermaid
-graph TD:
-
-
-
-~~~
+https://www.freva.com/dht11-temperature-and-humidity-sensor-on-raspberry-pi/
