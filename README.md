@@ -164,3 +164,14 @@ Components :
 + Pir * 3
 + Buzzer
 + Heat shrink tube
+
+
+# flow chart
+
+
+~~~mermaid
+graph TD:
+
+
+
+~~~
