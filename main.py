@@ -1,4 +1,5 @@
 import time.sleep as sleep 
+import subprocess 
 import RPi.GPIO as gpio
 import time
 import board
@@ -24,10 +25,10 @@ def dht():
 
 	temp = sensor.temperature
 	humidity = sensor.humidity
-	print("Temperature: {}*C   Humidity: {}% ".format(temp, humidity))
+	##	print("Temperature: {}*C   Humidity: {}% ".format(temp, humidity))
 	except RuntimeError as error:
 		print(error.args[0])
-		time.sleep(2.0)
+# time.sleep(2.0)
 		continue
 	except Exception as error:
 		sensor.exit()
@@ -97,5 +98,28 @@ class Dist:
 
 		return distance
 
+fl_ul = Dist.distance(tr,ech)
+br_ul = Dist.distance(tr,ech)
+ff_ul = Dist.distance(tr,ech)
+bb_ul = Dist.distance(tr,ech)
+fr_ul = Dist.distance(tr,ech)
+bl_ul = Dist.distance(tr,ech)
+
+min_dist = 50 
+
+if min_dist > fl_ul:
+	motor.right_turn()
 
 
+elif  min_dist > fr_ul:
+	motor.left_turn()
+	
+elif min_dist > fl_ul:
+	motor.right_turn()
+	
+else  min_dist > fl_ul:
+	motor.right_turn()
+
+humidity,temp = dht();
+
+print("Temperature: {}*C   Humidity: {}% ".format(temp, humidity))

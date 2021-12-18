@@ -1,4 +1,8 @@
 #import necessary libraries
+
+# https://roboticadiy.com/intruder-alarm-with-email-notification/
+
+
 from gpiozero import LED, Button, MotionSensor, Buzzer 
 import smtplib
 from time import sleep
@@ -14,9 +18,9 @@ buzzer = Buzzer(27)
 Alarm_state = False
 
 #replace the next three lines with your credentials
-from_email_addr = 'piraspberry364@gmail.com'
-from_email_password = 'Asqw@3254'
-to_email_addr = 'pir55452@gmail.com'
+from_email_addr = 'rpi.aj.tx@gmail.com'
+from_email_password = 'rpiajtx.123'
+to_email_addr = 'amjyo539@gmail.com'
 
 #set your email message
 body = 'Raspberry Pi Alert: Motion is detected in your room.'
