@@ -2,10 +2,10 @@ import subprocess
 import RPi.GPIO as gpio
 import time
 import board
-import adafruit_dht
+import Adafruit_DHT
 import psutil
 
-gpio.setwarnings(true)
+gpio.setwarnings(True)
 gpio.setmode(gpio.BCM)
 
 # motor pins
@@ -97,13 +97,17 @@ class Dist:
 
 		return distance
 
-fl_ul = Dist.distance(tr,ech)
-br_ul = Dist.distance(tr,ech)
-ff_ul = Dist.distance(tr,ech)
-bb_ul = Dist.distance(tr,ech)
-fr_ul = Dist.distance(tr,ech)
-bl_ul = Dist.distance(tr,ech)
+fl_ul = Dist.distance(4,14)
+br_ul = Dist.distance(17,18)
+ff_ul = Dist.distance(22,23)
+bb_ul = Dist.distance(9,25)
+fr_ul = Dist.distance(11,8)
+bl_ul = Dist.distance(0,1)
 
+
+right_M = motor(19,16)
+left_M = motor(26,20)
+	
 min_dist = 50 
 
 if min_dist > fl_ul:
