@@ -5,8 +5,18 @@ import board
 import Adafruit_DHT
 import psutil
 
+gpio.cleanup()
 gpio.setwarnings(True)
 gpio.setmode(gpio.BCM)
+
+# gpio setmode 
+
+gpio_out_list = [2,17,10,0,6,19]
+gpio_in_list = [3,27,9,5,13,26]
+
+for i in range(6):
+	gpio.setup(gpio_out_list[i],gpio.OUT)
+	gpio.setup(gpio_in_list[i],gpio.IN)
 
 # motor pins
 # r1,r2 right side motor terminals
@@ -71,22 +81,22 @@ class Dist:
 		self.echo = echo
 
 
-	def distance(self,trig,echo):
-		GPIO.output(self.trig, True)
+	def distance(self):
+		gpio.output(self.trig, True)
 
 # set Trigger after 0.01ms to LOW
 		time.sleep(0.00001)
-		GPIO.output(self.trig, False)
+		gpio.output(self.trig,True )
 
 		StartTime = time.time()
 		StopTime = time.time()
 
 # save StartTime
-		while GPIO.input(self.echo) == 0:
+		while gpio.input(self.echo) == 0:
 			StartTime = time.time()
 
 # save time of arrival
-		while GPIO.input(self.echo) == 1:
+		while gpio.input(self.echo) == 1:
 			StopTime = time.time()
 
 # time difference between start and arrival
@@ -96,15 +106,17 @@ class Dist:
 		distance = (TimeElapsed * 34300) / 2
 
 		return distance
-def loop():
-		
-	fl_ul = Dist.distance(2,3)
-	br_ul = Dist.distance(17,27)
-	ff_ul = Dist.distance(10,9)
-	bb_ul = Dist.distance(0,5)
-	fr_ul = Dist.distance(6,13)
-	bl_ul = Dist.distance(19,26)
+	
 
+
+fl_ul = Dist(2,3)
+br_ul = Dist(17,27)
+ff_ul = Dist(10,9)
+bb_ul = Dist(0,5)
+fr_ul = Dist(6,13)
+bl_ul = Dist(19,26)
+	
+def loop():
 
 	right_M = motor(20,21)
 	left_M = motor(7,1)
@@ -127,4 +139,12 @@ def loop():
 	humidity,temp = dht();
 
 	print("Temperature: {}*C   Humidity: {}% ".format(temp, humidity))
+print("fn")
+while True:
+	
+	
+	time.sleep(2)
+	print(fr_ul.distance())
+	time.sleep(2)
 
+	print("fl-end")
