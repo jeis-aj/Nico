@@ -1,4 +1,3 @@
-import time.sleep as sleep 
 import subprocess 
 import RPi.GPIO as gpio
 import time
@@ -15,24 +14,24 @@ gpio.setmode(gpio.BCM)
 
 
 def dht():
-	# https://www.freva.com/dht11-temperature-and-humidity-sensor-on-raspberry-pi/
+# https://www.freva.com/dht11-temperature-and-humidity-sensor-on-raspberry-pi/
 
 		# We first check if a libgpiod process is running. If yes, we kill it!
 	for proc in psutil.process_iter():
-	    if proc.name() == 'libgpiod_pulsein' or proc.name() == 'libgpiod_pulsei':
-		proc.kill()
+		if proc.name() == 'libgpiod_pulsein' or proc.name() == 'libgpiod_pulsei':
+			proc.kill()
 	sensor = adafuit_dht.DHT11(board.D23)
 
 	temp = sensor.temperature
 	humidity = sensor.humidity
-	##	print("Temperature: {}*C   Humidity: {}% ".format(temp, humidity))
-	except RuntimeError as error:
-		print(error.args[0])
-# time.sleep(2.0)
-		continue
-	except Exception as error:
-		sensor.exit()
-		raise error
+##	print("Temperature: {}*C   Humidity: {}% ".format(temp, humidity))
+# 	except RuntimeError as error:
+#		print(error.args[0])
+## time.sleep(2.0)
+#		continue
+#	except Exception as error:
+#		sensor.exit()
+#		raise error
 	return humidity,temp
 
 class  motor:
@@ -84,11 +83,11 @@ class Dist:
 
 # save StartTime
 		while GPIO.input(self.echo) == 0:
-		StartTime = time.time()
+			StartTime = time.time()
 
 # save time of arrival
 		while GPIO.input(self.echo) == 1:
-		StopTime = time.time()
+			StopTime = time.time()
 
 # time difference between start and arrival
 		TimeElapsed = StopTime - StartTime
@@ -117,7 +116,7 @@ elif  min_dist > fr_ul:
 elif min_dist > fl_ul:
 	motor.right_turn()
 	
-else  min_dist > fl_ul:
+else  :
 	motor.right_turn()
 
 humidity,temp = dht();
