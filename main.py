@@ -80,6 +80,12 @@ def left_turn(r1,r2,l1,l2):
 	gpio.output(r2,gpio.HIGH)
 	gpio.output(l1,gpio.HIGH)
 	gpio.output(l2,gpio.LOW)
+
+def stop(r1,r2,l1,l2):
+	gpio.output(r1,gpio.LOW)
+	gpio.output(r2,gpio.LOW) 
+	gpio.output(l1,gpio.LOW)
+	gpio.output(l2,gpio.LOW)
 # 
 class Dist:
 	def __init__(self,trig,echo):
@@ -159,9 +165,13 @@ while True:
 
 	forward(r1,r2,l1,l2)
 	time.sleep(2)
+	stop(r1,r2,l1,l2)
 	right_turn(r1,r2,l1,l2)
+	stop(r1,r2,l1,l2) 
 	time.sleep(2)
 	left_turn(r1,r2,l1,l2)
+
+	stop(r1,r2,l1,l2) 
 	time.sleep(2)
 	right_turn(r1,r2,l1,l2)
 	time.sleep(2)
