@@ -1,4 +1,6 @@
 bottle==0.12.19
+colorzero==2.0
+gpiozero==1.6.2
 Markdown==2.6.11
 markdown-server==0.1.4
 psutil==5.8.0
