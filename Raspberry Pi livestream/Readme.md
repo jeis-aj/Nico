@@ -1,4 +1,3 @@
-
 - Install Motion
    ```bash
    sudo apt-get install motion
