@@ -1,43 +1,58 @@
+<!DOCTYPE html>
 <html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-</head>
-<body>
-<img src="http://192.168.43.199:8081" /> <!--Enter the IP Address of your Raspberry Pi-->
-<div style="float:right">
-</div>
-<div style=" height:400px; width:300px; float:right;">
-<center>
-<h2>Web Controlled</h2>
-<h2>Surveillance Robot</h2><br><br>
-<a href="#" id="up" style="font-size:30px;text-decoration:none;">  &#x1F881;&#x1F881;<br>Forward</a><br><br></center>
-<a href="#" id="left" style="font-size:30px;text-decoration:none;"> &#x1F880;&#x1F880;Left</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="#" id="right" style="font-size:30px; text-decoration:none;"> Right &#x1F882;&#x1F882;</a><br><br>
-<center><a href="#" id="down" style="font-size:30px;text-decoration:none;"> Backward<br> &#x1F883;&#x1F883;</a></center>
-</div>
-<script>
-$( document ).ready(function(){
-    $("#down").on("mousedown", function() {
-     $.get('/down_side');
-     }).on('mouseup', function() {
-     $.get('/stop');
-    });
-    $("#up").on("mousedown", function() {
-     $.get('/up_side');
-     }).on('mouseup', function() {
-     $.get('/stop');
-    });
-    $("#left").on("mousedown", function() {
-     $.get('/left_side');
-     }).on('mouseup', function() {
-     $.get('/stop');
-    });
-    $("#right").on("mousedown", function() {
-     $.get('/right_side');
-     }).on('mouseup', function() {
-     $.get('/stop');
-    });
-});
-</script>
-</body>
+            <head>
+                        <title>Surveillance Robot</title>
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+            </head>
+<style>
+table ,td, tr {
+                        width: 30%;
+}
+</style>
+            <body>
+                        <img src="http://192.168.1.207:8081/" style="float:left; width:100%; max-width: 700px; max-height:600px; border-radius:10px"></img>
+                <table style="float:right; width:100%; max-width: 400px; height:300px;">
+                 <tr style="text-align:center">
+                    <td >
+                         <h2>Web Controlled Surveillance Robot</h2>
+                            <td >                 
+                 <tr>
+                 <tr>
+                             <td style="text-align: center">
+                                    <form action="/1" method="POST">
+                                  <button id="FWD" class="robot">FORWARD</button>
+                                  </br>
+                                </form>
+                             </td>
+                 <tr>
+                 <tr style="text-align: left">
+                             <td style="text-align: left>
+                            <form action="/2" method="POST">
+                                     <button id="LFT" class="robot">LEFT</button>
+                                     </br>
+                                </form>
+                             </td>
+                     <td style="text-align: left>
+                                    <form action="/4" method="POST">
+                                     <button id="RGT" class="robot">RIGHT</button>
+                                  </br>
+                                    </form>
+                             </td>
+                             <td >
+                                    <form action="/3" method="POST">
+                                     <button id="STP" class="robot">STOP</button>
+                                      </br>
+                                    </form>
+                     </td>                          
+                   <tr>
+                   <tr>
+                             <td style="text-align: center">
+                                    <form action="/5" method="POST">
+                                     <button id="REV" class="robot">REVERSE</button>
+                                     </br>
+                                </form>
+                             </td>
+                   </tr>
+                        </table>
+        </body>
 </html>
