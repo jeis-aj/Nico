@@ -23,7 +23,7 @@
   sudo /etc/init.d/motion restart
   ``` 
 
-- Open the video feed page using your Pi’s IP address with port 8081 (192.168.1.207:8081).
+- Open the video feed page using your Pi’s IP address with port 8081. If the IP of the raspberry pi is 192.168.1.2 then go to 192.168.1.2:8081.
   Flask Web Framework is used to create a Web Server to control the robot. 
 
   Installing Flask in Raspberry Pi
